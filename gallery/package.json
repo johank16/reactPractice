@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "PORT=9000 npm run build && PORT=9000 node src/server/index.js",
-    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "client": "webpack-dev-server --port 9000 --mode development --devtool inline-source-map --hot",
     "server": "PORT=9000 nodemon src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
