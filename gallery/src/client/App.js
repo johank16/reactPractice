@@ -129,7 +129,7 @@ function LoginPage(props) {
   return (<div className='LoginPage'>
             <h1>Please log in</h1>
             <form>
-              <label className={props.username == '' ? 'input-error' : 'input'}>Enter username <input type='text' onChange={(event) => props.setUsername(event.target.value)}></input></label><br /><br />
+              <label className={props.username == '' ? 'input-error' : 'input'}>Enter username <input type='text' placeholder='demo' onChange={(event) => props.setUsername(event.target.value)}></input></label><br /><br />
               <label className={passwordField == '' ? 'input-error' : 'input'}>Enter password <input type='password' value='password' onChange={updatePasswordField}></input></label>
               <h6>The password has been hardcoded to always work</h6>
               <button onClick={submitLogin}>Submit</button>
