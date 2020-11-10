@@ -7,7 +7,7 @@ import LoadingImage from './loading.gif';
 
 function App() {
 
-  const [username, setUsername] = useState(null)
+  const [username, setUsername] = useState('demo')
   const [authenticated, setAuthenticated] = useState(false)
 
   return authenticated ?
