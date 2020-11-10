@@ -12,7 +12,7 @@ function App() {
 
   return authenticated ?
           <>
-            <div>{username ? <h1>{'Hello '+username}</h1> : <h1>Loading.. please wait!</h1>}</div> 
+            <div><h1>{'Hello '+username}</h1></div> 
             <CloudPage username={username} setUsername={setUsername} setAuthenticated={setAuthenticated} ></CloudPage>
           </> :
           <LoginPage username={username} setUsername={setUsername} setAuthenticated={setAuthenticated} ></LoginPage>
