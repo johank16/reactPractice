@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <h1>Practice projects:</h1>
+      <h1>React projects:</h1>
       <Project name='Image gallery' link='http://104.248.224.25:9000'></Project><br/>
       <Project name='Wikipedia search engine' link='http://104.248.224.25:9002'></Project><br/>
       <Project name='Online chat' link='http://104.248.224.25:9001'></Project><br/>
