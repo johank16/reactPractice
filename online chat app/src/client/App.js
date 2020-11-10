@@ -25,7 +25,7 @@ const ChatWindow = function(props) {
       if(chatWebsocket != null)
         chatWebsocket.close()
 
-      let ws = new WebSocket('ws://localhost:3002')
+      let ws = new WebSocket('ws://104.248.224.25:3002')
       ws.onopen = function() {
         console.log('chat window websocket connected')
         ws.send( JSON.stringify({ type: 'subscribe', name: props.chatRoomName }) )
@@ -81,7 +81,7 @@ function LeftPanel(props) {
   useEffect( () => {
     console.log('subscribing to chatrooms list websocket')
     
-    let ws = new WebSocket('ws://localhost:3005')
+    let ws = new WebSocket('ws://104.248.224.25:3005')
     ws.onopen = function() {
       console.log('   chatroom list websocket opened')
       ws.send( JSON.stringify( { type: 'requestRooms' } ))
