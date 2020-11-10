@@ -1,0 +1,35 @@
+h1 {
+  color: red;
+}
+
+body {
+  text-align: center;
+  margin: auto;
+}
+
+
+.WindowHolder {
+	width:100%;
+	overflow:hidden;
+}
+
+.MainWindow {
+	-webkit-transition: max-width 1s ease;
+	width:400%
+}
+
+
+.LeftPanel {
+	display:inline-block;
+	width:25%;
+	vertical-align:top;
+}
+
+.ChatWindow {
+	outline: black;
+	display:inline-block; 
+	width:75%;
+	box-shadow:inset 0px 0px 15px 1px #e6e6e6;
+}
+
+
