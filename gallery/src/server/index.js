@@ -73,7 +73,7 @@ app.post('/api/fetchImage', (req, res) => {
 
 
 
-app.listen(process.env.PORT || 5005, () => console.log(`Listening on port ${process.env.PORT || 5005}!`));
+app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
 
 
 

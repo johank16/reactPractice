@@ -36,7 +36,7 @@ module.exports = {
     open: true,
     historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:5005'
+      '/api': 'http://localhost:8080'
     }
   },
   plugins: [

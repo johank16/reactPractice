@@ -21,14 +21,14 @@ app.get('/api/hi', (req, res) =>
 });
 
 
-// const WebSocketServer = require('ws').Server
-// const wss = new WebSocketServer({port:5008})
-// wss.on('connection', function(ws) {
-// 	ws.on('message', function(msg)
-// 	{
-// 		console.log("received message: " + msg)
-// 	})
-// })
+const WebSocketServer = require('ws').Server
+const wss = new WebSocketServer({port:3001})
+wss.on('connection', function(ws) {
+	ws.on('message', function(msg)
+	{
+		console.log("received message: " + msg)
+	})
+})
 
 
-app.listen(process.env.PORT || 5007, () => console.log(`Listening on port ${process.env.PORT || 5007}!`));
+app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
