@@ -95,8 +95,8 @@ function App() {
     <div>
       {username ? 
         <>
-          <h1>Hello {username}</h1> 
-          <label>Enter a Wikipedia search query <input type='text' defaultValue='Enter text here' onChange={inputChange}></input></label>
+          <h1>Wikipedia Search Engine</h1> 
+          <label>Type to search <input type='text' defaultValue='Enter text here' onChange={inputChange}></input></label>
           <br />
           <br />
           <ArticleHolder searchResults={searchResults} />

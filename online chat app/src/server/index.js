@@ -12,7 +12,7 @@ app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().use
 
 let chatRooms = {}
 
-let wss = new WebSocketServer( { port: 3001 } )
+let wss = new WebSocketServer( { port: 3005 } )
 wss.on('connection', (ws) =>
 {
 	console.log('new connection to chatroom list')
@@ -44,7 +44,7 @@ let chatWS = new WebSocketServer( { port: 3002 } )
 chatWS.on('connection', ws => {
 	console.log('new chat window conenction')
 
-	ws.username = os.userInfo().username
+	// ws.username = os.userInfo().username
 
 	ws.on('message', msg => {
 
@@ -58,7 +58,7 @@ chatWS.on('connection', ws => {
 		}
 		else if(msg.type == 'newMessage')
 		{
-			chatRooms[msg.name].messages.push({ user: ws.username, timestamp: new Date().getTime(), message: msg.message })
+			chatRooms[msg.name].messages.push({ user: msg.username, timestamp: new Date().getTime(), message: msg.message })
 			// chatRooms[msg.name].participants.forEach( (participantWS) => {
 			for(let i = chatRooms[msg.name].participants.length-1; i >= 0; i--)
 			{

@@ -45,9 +45,13 @@ const ChatWindow = function(props) {
 
 
   function submitMessage(event) {
-    chatWebsocket.send(JSON.stringify({ type: 'newMessage', name: props.chatRoomName, message: messageText }))
+    event.preventDefault()
+    inputRef.current.value = ''
+    setMessageText('')
+    chatWebsocket.send(JSON.stringify({ type: 'newMessage', username: props.username, name: props.chatRoomName, message: messageText }))
   }
 
+  let inputRef = React.createRef()
 
   let messageHTML = messages.map( msg => 
     <div key={msg.user + msg.timestamp}>
@@ -58,8 +62,10 @@ const ChatWindow = function(props) {
 
   return( <div className='ChatWindow'>
             {messageHTML}
-            <input type="text" placeholder='Enter message' onChange={() => {setMessageText(event.target.value)}}></input>
-            <button type="submit" onClick={submitMessage}>Send</button>
+            <form>
+              <input type="text" placeholder='Enter message' ref={inputRef} onChange={() => {setMessageText(event.target.value)}}></input>
+              <button type="submit" onClick={submitMessage}>Send</button>
+            </form>
           </div> )
 }
 
@@ -75,7 +81,7 @@ function LeftPanel(props) {
   useEffect( () => {
     console.log('subscribing to chatrooms list websocket')
     
-    let ws = new WebSocket('ws://localhost:3001')
+    let ws = new WebSocket('ws://localhost:3005')
     ws.onopen = function() {
       console.log('   chatroom list websocket opened')
       ws.send( JSON.stringify( { type: 'requestRooms' } ))
@@ -122,10 +128,11 @@ function App() {
   const [chatRoomName, setChatRoomName] = useState(null)
 
   async function loadUsername() {
-    console.log('loading username')
-    let response = await fetch('/api/getUsername')
-    let data = await response.json() 
-    setUsername(data.username) 
+    setUsername(prompt("What's your name?"))
+    // console.log('loading username')
+    // let response = await fetch('/api/getUsername')
+    // let data = await response.json() 
+    // setUsername(data.username) 
   }
 
   useEffect( () => {
@@ -143,7 +150,7 @@ function App() {
       {contentHTML}
       <div className='MainWindow' style={ chatRoomName ? {maxWidth:'100%'} : {maxWidth:'400%'} }>
         <LeftPanel setChatRoomName={setChatRmName} />
-        <ChatWindow chatRoomName={chatRoomName}  />
+        <ChatWindow username={username} chatRoomName={chatRoomName}  />
       </div>
     </div>
   )
